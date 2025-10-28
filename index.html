@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eddy360 - Your Trusted Gadget Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #FF2D2D;
+            --dark-text: #1a1a1a;
+            --light-bg: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--dark-text) !important;
+        }
+        
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-hero {
+            padding: 12px 30px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            border: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-3px);
+        }
+        
+        .services {
+            background: white;
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .service-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--light-bg);
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .service-badge:hover {
+            background: var(--primary-red);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .service-badge i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
+        .category-section {
+            padding: 60px 0;
+            background: var(--light-bg);
+        }
+        
+        .category-section:nth-child(even) {
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-red);
+            margin: 15px 0;
+            border-radius: 2px;
+        }
+        
+        .category-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+        
+        .product-body {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark-text);
+        }
+        
+        .product-price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin-bottom: 12px;
+        }
+        
+        .product-preview {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+        
+        .condition-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .condition-new {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .condition-used {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .btn-view {
+            width: 100%;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .btn-view:hover {
+            background: #d91d1d;
+            color: white;
+        }
+        
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 25px;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .btn-close {
+            filter: brightness(0) invert(1);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .product-modal-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .specs-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .specs-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .spec-label {
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .spec-value {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+        
+        .modal-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-red);
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .btn-whatsapp {
+            width: 100%;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #20BA5A;
+            color: white;
+        }
+        
+        .terms-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .terms-box h6 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+        
+        .terms-box ul {
+            padding-left: 20px;
+        }
+        
+        .terms-box li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 8px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 0.2rem rgba(255, 45, 45, 0.1);
+        }
+        
+        .footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer h5 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: var(--primary-red);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .product-image {
+                height: 220px;
+            }
+            .product-modal-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="logo-circle"></span>
+                Eddy360
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#iphones">iPhones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#ringlights">Ring Lights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#accessories">Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="#services">Services</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your Trusted Gadget Showroom</h1>
+            <p>Quality Gadgets, iPhones, Ring Lights & More - View Full Specs Before You Buy</p>
+            <div class="cta-buttons">
+                <a href="#iphones" class="btn btn-light btn-hero">Browse Products</a>
+                <button class="btn btn-warning btn-hero" data-bs-toggle="modal" data-bs-target="#sellModal">
+                    <i class="fas fa-tag"></i> Sell Your Item
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services-top">
+        <div class="container text-center">
+            <div class="service-badge" data-bs-toggle="modal" data-bs-target="#escrowModal">
+                <i class="fas fa-shield-alt"></i> Escrow Service
+            </div>
+            <div class="service-badge"><i class="fas fa-search"></i> Product Sourcing</div>
+            <div class="service-badge"><i class="fas fa-truck"></i> Fast Delivery</div>
+            <div class="service-badge"><i class="fas fa-tshirt"></i> Cloth Branding</div>
+            <div class="service-badge"><i class="fas fa-certificate"></i> Quality Guaranteed</div>
+        </div>
+    </section>
+
+   
+
+    <!-- SERVICES CATEGORY -->
+    <section class="category-section" id="services">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Our Services</h2>
+            <p class="category-description">Professional services tailored to your needs</p>
+            
+            <div class="row">
+                <!-- Cloth Branding -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80" alt="Cloth Branding" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Service</span>
+                            <h3 class="product-title">Custom Cloth Branding</h3>
+                            <div class="product-price">₦1,500/piece</div>
+                            <div class="product-preview">Your logo • High quality print • 3-5 days delivery</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product19">View Full Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Sourcing -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=500&q=80" alt="Product Sourcing" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Service</span>
+                            <h3 class="product-title">Product Sourcing</h3>
+                            <div class="product-price">Contact Us</div>
+                            <div class="product-preview">Find any product • Quality guaranteed • Competitive pricing</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product20">View Full Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Escrow Service -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&q=80" alt="Escrow Service" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Service</span>
+                            <h3 class="product-title">Secure Escrow Service</h3>
+                            <div class="product-price">Safe & Secure</div>
+                            <div class="product-preview">Protected transactions • Peace of mind • Trusted intermediary</div>
+                            <button class="btn-view" data-bs-toggle="modal" data-bs-target="#escrowModal">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2348000000000?text=Hello%20Eddy360!%20I%27d%20like%20to%20inquire%20about%20your%20products%20and%20services." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Escrow Modal -->
+    <div class="modal fade" id="escrowModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-shield-alt"></i> Escrow Service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="mb-3">What would you like to do?</h5>
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-outline-primary w-100 p-4" onclick="document.getElementById('escrowChoice').value='sell'; document.getElementById('escrowOptions').style.display='none'; document.getElementById('escrowTerms').style.display='block';">
+                                <i class="fas fa-tag fa-3x mb-3"></i>
+                                <h5>I have a product to sell</h5>
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn btn-outline-success w-100 p-4" onclick="document.getElementById('escrowChoice').value='deal'; document.getElementById('escrowOptions').style.display='none'; document.getElementById('escrowTerms').style.display='block';">
+                                <i class="fas fa-handshake fa-3x mb-3"></i>
+                                <h5>I want to initiate a deal</h5>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="escrowOptions">
+                        <p class="text-muted">Select an option above to proceed with our secure escrow service.</p>
+                    </div>
+
+                    <div id="escrowTerms" style="display: none;">
+                        <div class="terms-box">
+                            <h6><i class="fas fa-file-contract"></i> Escrow Terms & Conditions</h6>
+                            <ul>
+                                <li><strong>Secure Transaction:</strong> Eddy360 holds payment until buyer confirms satisfaction with the product or service.</li>
+                                <li><strong>Buyer Protection:</strong> Money is only released to seller after buyer inspection and approval.</li>
+                                <li><strong>Seller Protection:</strong> Guaranteed payment once transaction is completed successfully.</li>
+                                <li><strong>Service Fee:</strong> 5% of transaction value (minimum ₦500).</li>
+                                <li><strong>Inspection Period:</strong> Buyer has 48 hours to inspect and approve the product.</li>
+                                <li><strong>Dispute Resolution:</strong> Eddy360 mediates any disputes fairly and transparently.</li>
+                                <li><strong>Refund Policy:</strong> Full refund if product significantly differs from description.</li>
+                                <li><strong>Payment Methods:</strong> Bank transfer, mobile money, or cash pickup accepted.</li>
+                            </ul>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="agreeTerms">
+                            <label class="form-check-label" for="agreeTerms">
+                                I have read and agree to the escrow terms and conditions
+                            </label>
+                        </div>
+
+                        <input type="hidden" id="escrowChoice" value="">
+                        <a href="#" class="btn-whatsapp" onclick="proceedEscrow(event)">
+                            <i class="fab fa-whatsapp"></i>
+                            Proceed to WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sell Item Modal -->
+    <div class="modal fade" id="sellModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-tag"></i> Sell Your Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="sellForm">
+                        <div class="mb-3">
+                            <label class="form-label">What are you selling?</label>
+                            <input type="text" class="form-control" id="itemName" placeholder="e.g., iPhone 12, Ring Light, etc." required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Condition</label>
+                            <select class="form-select" id="itemCondition" required>
+                                <option value="">Select condition</option>
+                                <option value="Brand New">Brand New</option>
+                                <option value="Used - Excellent">Used - Excellent (9/10)</option>
+                                <option value="Used - Very Good">Used - Very Good (8/10)</option>
+                                <option value="Used - Good">Used - Good (7/10)</option>
+                                <option value="Used - Fair">Used - Fair (6/10)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Your Asking Price (₦)</label>
+                            <input type="number" class="form-control" id="itemPrice" placeholder="e.g., 150000" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Description / Specifications</label>
+                            <textarea class="form-control" id="itemDescription" rows="4" placeholder="Describe your item, include specifications, color, accessories included, etc." required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="sellerName" placeholder="Your name" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Upload Photos (optional)</label>
+                            <input type="file" class="form-control" id="itemPhotos" multiple accept="image/*">
+                            <small class="text-muted">Note: You'll need to send photos via WhatsApp after clicking submit</small>
+                        </div>
+
+                        <a href="#" class="btn-whatsapp" onclick="submitSellForm(event)">
+                            <i class="fab fa-whatsapp"></i>
+                            Continue to WhatsApp
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modals - Sample structure (repeat for each product) -->
+    
+    <!-- Product 1: iPhone 13 Pro Max -->
+    <div class="modal fade" id="product1" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">iPhone 13 Pro Max</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&q=80" alt="iPhone 13 Pro Max" class="product-modal-image">
+                    <span class="condition-badge condition-used">Used - Excellent</span>
+                    <p class="mt-3">Premium iPhone 13 Pro Max in excellent condition. Professionally tested and verified. This flagship device offers exceptional performance with its A15 Bionic chip and ProMotion display.</p>
+                    
+                    <h5 class="mt-4 mb-3 fw-bold">Specifications</h5>
+                    <ul class="specs-list">
+                        <li><span class="spec-label">Storage</span><span class="spec-value">256GB</span></li>
+                        <li><span class="spec-label">Color</span><span class="spec-value">Sierra Blue</span></li>
+                        <li><span class="spec-label">Battery Health</span><span class="spec-value">89%</span></li>
+                        <li><span class="spec-label">Condition Rating</span><span class="spec-value">9/10 Excellent</span></li>
+                        <li><span class="spec-label">Display</span><span class="spec-value">6.7" Super Retina XDR</span></li>
+                        <li><span class="spec-label">Camera</span><span class="spec-value">Triple 12MP with LiDAR</span></li>
+                        <li><span class="spec-label">Warranty</span><span class="spec-value">30 Days</span></li>
+                        <li><span class="spec-label">Accessories</span><span class="spec-value">Original charger & box</span></li>
+                    </ul>
+                    
+                    <div class="modal-price">₦420,000</div>
+                    
+                    <a href="https://wa.me/2348000000000?text=Hello%20Eddy360!%20I%27m%20interested%20in%20purchasing%3A%0A%0A*Product%3A*%20iPhone%2013%20Pro%20Max%0A*Price%3A*%20%E2%82%A6420%2C000%0A*Storage%3A*%20256GB%0A*Condition%3A*%209%2F10%20Excellent%0A*Battery%3A*%2089%25%0A%0APlease%20provide%20payment%20and%20delivery%20information." class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Buy Now on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product 2: iPhone 12 Pro -->
+    <div class="modal fade" id="product2" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">iPhone 12 Pro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?w=500&q=80" alt="iPhone 12 Pro" class="product-modal-image">
+                    <span class="condition-badge condition-used">Used - Excellent</span>
+                    <p class="mt-3">Premium used iPhone 12 Pro in excellent condition. Fully tested and verified. Comes with original charger and box. Perfect for professional photography and video.</p>
+                    
+                    <h5 class="mt-4 mb-3 fw-bold">Specifications</h5>
+                    <ul class="specs-list">
+                        <li><span class="spec-label">Storage</span><span class="spec-value">128GB</span></li>
+                        <li><span class="spec-label">Color</span><span class="spec-value">Pacific Blue</span></li>
+                        <li><span class="spec-label">Battery Health</span><span class="spec-value">87%</span></li>
+                        <li><span class="spec-label">Condition Rating</span><span class="spec-value">9/10 Excellent</span></li>
+                        <li><span class="spec-label">Display</span><span class="spec-value">6.1" Super Retina XDR</span></li>
+                        <li><span class="spec-label">Camera</span><span class="spec-value">Triple 12MP Pro camera system</span></li>
+                        <li><span class="spec-label">Warranty</span><span class="spec-value">30 Days</span></li>
+                    </ul>
+                    
+                    <div class="modal-price">₦280,000</div>
+                    
+                    <a href="https://wa.me/2348000000000?text=Hello%20Eddy360!%20I%27m%20interested%20in%20purchasing%3A%0A%0A*Product%3A*%20iPhone%2012%20Pro%0A*Price%3A*%20%E2%82%A6280%2C000%0A*Storage%3A*%20128GB%0A*Condition%3A*%209%2F10%20Excellent%0A*Battery%3A*%2087%25%0A%0APlease%20provide%20payment%20and%20delivery%20information." class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Buy Now on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add similar modals for products 3-20... I'll create a few more key ones -->
+
+    <!-- Product 7: 18" Ring Light -->
+    <div class="modal fade" id="product7" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Professional Ring Light 18"</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="https://images.unsplash.com/photo-1626379801473-e8e76c38e1eb?w=500&q=80" alt="18 inch Ring Light" class="product-modal-image">
+                    <span class="condition-badge condition-new">Brand New</span>
+                    <p class="mt-3">Professional 18-inch LED ring light perfect for content creators, photographers, and makeup artists. Adjustable brightness and color temperature with remote control.</p>
+                    
+                    <h5 class="mt-4 mb-3 fw-bold">Specifications</h5>
+                    <ul class="specs-list">
+                        <li><span class="spec-label">Size</span><span class="spec-value">18 inches (45cm)</span></li>
+                        <li><span class="spec-label">Power</span><span class="spec-value">50W LED</span></li>
+                        <li><span class="spec-label">Color Temperature</span><span class="spec-value">3000K-6500K adjustable</span></li>
+                        <li><span class="spec-label">Dimming</span><span class="spec-value">1-100% brightness control</span></li>
+                        <li><span class="spec-label">Stand Height</span><span class="spec-value">Adjustable up to 2m</span></li>
+                        <li><span class="spec-label">Accessories</span><span class="spec-value">Tripod stand, phone holder, remote control</span></li>
+                        <li><span class="spec-label">Warranty</span><span class="spec-value">6 Months</span></li>
+                    </ul>
+                    
+                    <div class="modal-price">₦25,000</div>
+                    
+                    <a href="https://wa.me/2348000000000?text=Hello%20Eddy360!%20I%27m%20interested%20in%20purchasing%3A%0A%0A*Product%3A*%20Professional%20Ring%20Light%2018%22%0A*Price%3A*%20%E2%82%A625%2C000%0A*Size%3A*%2018%20inches%0A*Power%3A*%2050W%20LED%0A*Includes%3A*%20Tripod%2C%20phone%20holder%2C%20remote%0A%0APlease%20provide%20payment%20and%20delivery%20information." class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Buy Now on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const WHATSAPP_NUMBER = '2348000000000'; // UPDATE THIS!
+
+        function proceedEscrow(e) {
+            e.preventDefault();
+            const agreed = document.getElementById('agreeTerms').checked;
+            const choice = document.getElementById('escrowChoice').value;
+            
+            if (!agreed) {
+                alert('Please read and agree to the terms and conditions');
+                return;
+            }
+            
+            if (!choice) {
+                alert('Please select an option first');
+                return;
+            }
+            
+            const message = choice === 'sell' 
+                ? `Hello Eddy360! 👋\n\nI would like to use your ESCROW SERVICE to sell a product.\n\nI have read and agreed to the escrow terms and conditions.\n\nPlease guide me on the next steps.`
+                : `Hello Eddy360! 👋\n\nI would like to use your ESCROW SERVICE to initiate a deal/transaction.\n\nI have read and agreed to the escrow terms and conditions.\n\nPlease guide me on the next steps.`;
+            
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        function submitSellForm(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('itemName').value;
+            const condition = document.getElementById('itemCondition').value;
+            const price = document.getElementById('itemPrice').value;
+            const description = document.getElementById('itemDescription').value;
+            const sellerName = document.getElementById('sellerName').value;
+            const hasPhotos = document.getElementById('itemPhotos').files.length > 0;
+            
+            if (!name || !condition || !price || !description || !sellerName) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            const message = `Hello Eddy360! 👋\n\nI want to SELL MY ITEM:\n\n*Item:* ${name}\n*Condition:* ${condition}\n*Asking Price:* ₦${price}\n*Seller:* ${sellerName}\n\n*Description:*\n${description}\n\n${hasPhotos ? 'I will send photos in the next message.' : 'No photos available at the moment.'}`;
+            
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+
+    <!-- USED IPHONES CATEGORY -->
+    <section class="category-section" id="iphones">
+        <div class="container">
+            <h2 class="section-title"><i class="fab fa-apple"></i> Used iPhones</h2>
+            <p class="category-description">Premium quality used iPhones - Tested & verified with warranty</p>
+            
+            <div class="row">
+                <!-- iPhone 13 Pro Max -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=500&q=80" alt="iPhone 13 Pro Max" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge
+condition-used">Used - Excellent</span>
+                            <h3 class="product-title">iPhone 13 Pro Max</h3>
+                            <div class="product-price">₦420,000</div>
+                            <div class="product-preview">256GB • Sierra Blue • Battery 89% • 9/10 Condition</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product1">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 12 Pro -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?w=500&q=80" alt="iPhone 12 Pro" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-used">Used - Excellent</span>
+                            <h3 class="product-title">iPhone 12 Pro</h3>
+                            <div class="product-price">₦280,000</div>
+                            <div class="product-preview">128GB • Pacific Blue • Battery 87% • All accessories</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product2">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 11 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1574755393849-623942496936?w=500&q=80" alt="iPhone 11" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-used">Used - Very Good</span>
+                            <h3 class="product-title">iPhone 11</h3>
+                            <div class="product-price">₦185,000</div>
+                            <div class="product-preview">64GB • Black • Battery 85% • Very good condition</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product3">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone XR -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=500&q=80" alt="iPhone XR" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-used">Used - Good</span>
+                            <h3 class="product-title">iPhone XR</h3>
+                            <div class="product-price">₦125,000</div>
+                            <div class="product-preview">64GB • Red • Battery 82% • Good working condition</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product4">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 12 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=500&q=80" alt="iPhone 12" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-used">Used - Excellent</span>
+                            <h3 class="product-title">iPhone 12</h3>
+                            <div class="product-price">₦240,000</div>
+                            <div class="product-preview">128GB • White • Battery 88% • Excellent condition</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product5">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 11 Pro -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1592286927505-4fdb0d3c2cbe?w=500&q=80" alt="iPhone 11 Pro" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-used">Used - Very Good</span>
+                            <h3 class="product-title">iPhone 11 Pro</h3>
+                            <div class="product-price">₦215,000</div>
+                            <div class="product-preview">256GB • Midnight Green • Battery 86% • Premium</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product6">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RING LIGHTS CATEGORY -->
+    <section class="category-section" id="ringlights">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-circle-notch"></i> Ring Lights</h2>
+            <p class="category-description">Professional lighting for content creators & photographers</p>
+            
+            <div class="row">
+                <!-- 18" Ring Light -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1626379801473-e8e76c38e1eb?w=500&q=80" alt="18 inch Ring Light" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Professional Ring Light 18"</h3>
+                            <div class="product-price">₦25,000</div>
+                            <div class="product-preview">50W LED • 3000K-6500K • Tripod & Remote included</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product7">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14" Ring Light -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=500&q=80" alt="14 inch Ring Light" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Ring Light 14" with Stand</h3>
+                            <div class="product-price">₦18,000</div>
+                            <div class="product-preview">40W LED • Dimmable • Phone holder • Perfect for videos</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product8">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10" Portable -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1598300056393-4aac492f4344?w=500&q=80" alt="10 inch Portable Ring Light" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Portable Ring Light 10"</h3>
+                            <div class="product-price">₦12,000</div>
+                            <div class="product-preview">USB powered • Compact • Great for selfies & makeup</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product9">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12" Desktop -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1595246140625-573b715d11dc?w=500&q=80" alt="12 inch Desktop Ring Light" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Desktop Ring Light 12"</h3>
+                            <div class="product-price">₦15,000</div>
+                            <div class="product-preview">3 color modes • Desktop stand • Bluetooth remote</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product10">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCESSORIES CATEGORY -->
+    <section class="category-section" id="accessories">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-plug"></i> Accessories & Gadgets</h2>
+            <p class="category-description">Essential accessories for your devices</p>
+            
+            <div class="row">
+                <!-- Memory Card 128GB -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1626354093956-6fdd1c225e0c?w=500&q=80" alt="128GB Memory Card" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">SanDisk Ultra 128GB</h3>
+                            <div class="product-price">₦8,500</div>
+                            <div class="product-preview">120MB/s • UHS-I • Original</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product11">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Memory Card 256GB -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1564466809058-bf4114d55352?w=500&q=80" alt="256GB Memory Card" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Samsung EVO 256GB</h3>
+                            <div class="product-price">₦15,000</div>
+                            <div class="product-preview">130MB/s • 4K ready • 10yr warranty</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product12">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Camera Tripod -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1617886322217-97081a8dff78?w=500&q=80" alt="Camera Tripod" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Professional Tripod</h3>
+                            <div class="product-price">₦15,000</div>
+                            <div class="product-preview">135cm height • Aluminum • Universal mount</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product13">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phone Tripod -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1606229365485-93a3b8ee0385?w=500&q=80" alt="Phone Tripod" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Phone Tripod Stand</h3>
+                            <div class="product-price">₦6,500</div>
+                            <div class="product-preview">Bluetooth remote • Lightweight • Portable</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product14">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Car Phone Holder -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1609682700098-93e796c3f88c?w=500&q=80" alt="Car Phone Holder" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Car Phone Holder</h3>
+                            <div class="product-price">₦3,500</div>
+                            <div class="product-preview">Dashboard mount • 360° rotation • Strong grip</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product15">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Stand -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1601524909162-ae8725290836?w=500&q=80" alt="Desktop Phone Stand" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Desktop Phone Stand</h3>
+                            <div class="product-price">₦4,000</div>
+                            <div class="product-preview">Adjustable angle • Non-slip base • Universal fit</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product16">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Wireless Charger -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1587825140408-6c4f3b8f5f4e?w=500&q=80" alt="Wireless Charger" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Fast Wireless Charger</h3>
+                            <div class="product-price">₦7,500</div>
+                            <div class="product-preview">10W fast charge • Qi certified • Sleek design</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product17">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bluetooth Earbuds -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1580894894517-9f3b8f5f4e6c?w=500&q=80" alt="Bluetooth Earbuds" class="product-image">
+                        <div class="product-body">
+                            <span class="condition-badge condition-new">Brand New</span>
+                            <h3 class="product-title">Wireless Bluetooth Earbuds</h3>
+                            <div class="product-price">₦12,000</div>
+                            <div class="product-preview">Noise-cancelling • Charging case • 20hr battery</div>
+                            <a href="#" class="btn-view" data-bs-toggle="modal" data-bs-target="#product18">View Full Specs</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>About Eddy360</h5>
+                    <p>Your trusted partner for quality gadgets, accessories, and logistics services. We provide escrow services and product sourcing to ensure your satisfaction.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <p>
+                        <a href="#iphones">Used iPhones</a><br>
+                        <a href="#ringlights">Ring Lights</a><br>
+                        <a href="#accessories">Accessories</a><br>
+                        <a href="#services">Services</a><br>
+                        <a href="https://www.facebook.com/Eddy360logistics/" target="_blank">Facebook Page</a>
+                    </p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Us</h5>
+                    <p>
+                        <i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/2348000000000">+234 800 000 0000</a><br>
+                        <i class="fab fa-facebook"></i> <a href="https://www.facebook.com/Eddy360logistics/" target="_blank">Eddy360logistics</a><br>
+                        <i class="fas fa-map-marker-alt"></i> Port Harcourt, Nigeria
+                    </p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0 20px;">
+            <p>&copy; 2025 Eddy360. All rights reserved. Built with passion for quality service.</p>
+        </div>
+    </footer>
+</body>
+</html> 
